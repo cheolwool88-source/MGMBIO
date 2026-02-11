@@ -12,7 +12,12 @@ const Footer: React.FC = () => {
 
   useEffect(() => {
     const handleSetProject = (e: any) => {
-      setFormData(prev => ({ ...prev, project: e.detail, message: `${e.detail} 프로젝트에 대한 상세 기술 자료 및 컨설팅을 요청합니다.` }));
+      const projectTitle = e.detail;
+      setFormData(prev => ({ 
+        ...prev, 
+        project: projectTitle, 
+        message: `${projectTitle} 프로젝트에 대한 상세 기술 자료 및 컨설팅을 요청합니다.` 
+      }));
     };
     window.addEventListener('setProjectInquiry', handleSetProject);
     return () => window.removeEventListener('setProjectInquiry', handleSetProject);
@@ -20,12 +25,12 @@ const Footer: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`문의가 접수되었습니다: ${formData.project}\n빠른 시일 내에 연락드리겠습니다.`);
+    alert(`문의가 접수되었습니다: ${formData.project || '일반 문의'}\n빠른 시일 내에 연락드리겠습니다.`);
     setFormData({ name: '', email: '', org: '', project: '', message: '' });
   };
 
   return (
-    <footer id="contact" className="bg-[#050505] pt-32 pb-12 px-6 md:px-12 border-t border-neutral-900">
+    <footer id="contact" className="bg-[#050505] pt-32 pb-12 px-6 md:px-12 border-t border-neutral-900 relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 mb-24">
           
@@ -59,14 +64,14 @@ const Footer: React.FC = () => {
                 <FormInput 
                   label="성함" 
                   value={formData.name} 
-                  onChange={(v) => setFormData({...formData, name: v})} 
+                  onChange={(v) => setFormData(p => ({...p, name: v}))} 
                   placeholder="홍길동"
                 />
                 <FormInput 
                   label="이메일" 
                   type="email" 
                   value={formData.email} 
-                  onChange={(v) => setFormData({...formData, email: v})} 
+                  onChange={(v) => setFormData(p => ({...p, email: v}))} 
                   placeholder="example@mail.com"
                 />
               </div>
@@ -74,14 +79,14 @@ const Footer: React.FC = () => {
                 <FormInput 
                   label="소속 기관/기업" 
                   value={formData.org} 
-                  onChange={(v) => setFormData({...formData, org: v})} 
+                  onChange={(v) => setFormData(p => ({...p, org: v}))} 
                   placeholder="기업명 또는 기관명"
                 />
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">관심 프로젝트</label>
                   <select 
                     value={formData.project}
-                    onChange={(e) => setFormData({...formData, project: e.target.value})}
+                    onChange={(e) => setFormData(p => ({...p, project: e.target.value}))}
                     className="bg-neutral-800 border-none rounded-xl px-4 py-3 text-sm text-white focus:ring-1 focus:ring-[#fc3b00] outline-none"
                   >
                     <option value="">프로젝트 선택</option>
@@ -97,7 +102,7 @@ const Footer: React.FC = () => {
                 <textarea 
                   rows={4}
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  onChange={(e) => setFormData(p => ({...p, message: e.target.value}))}
                   className="bg-neutral-800 border-none rounded-xl px-4 py-4 text-sm text-white focus:ring-1 focus:ring-[#fc3b00] outline-none resize-none"
                   placeholder="문의 내용을 상세히 적어주세요."
                 />
