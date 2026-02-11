@@ -5,7 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 const Assistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: 'user' | 'bot', text: string }[]>([
-    { role: 'bot', text: '반갑습니다. 엠지오바이오의 바이오-테크 AI 어시스턴트입니다. 토양 복원 프로젝트나 동애등애 자원화 시스템 등 당사의 주요 성공 사례에 대해 궁금한 점이 있으신가요?' }
+    { role: 'bot', text: '반갑습니다. MG Bio Serve Inc.의 바이오-테크 AI 어시스턴트입니다. 중국 산둥성의 대규모 동애등애 자원화 센터나 토양 복원 프로젝트 등 당사의 주요 성공 사례에 대해 궁금한 점이 있으신가요?' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -29,14 +29,15 @@ const Assistant: React.FC = () => {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
-        contents: `You are an AI assistant for MGO BIO (엠지오바이오). 
+        contents: `You are an AI assistant for MG Bio Serve Inc. 
         Key Success Stories to refer:
         1. China Soil Remediation: Increased Organic Matter (TOC) by 42%, reduced heavy metals by 35%, and increased crop yield by 27% using microbial agents.
-        2. BSF Resource Recovery: Processed food waste using Black Soldier Fly, reducing costs by 30% and odors by 80%, with 200% capacity scale-up.
+        2. China Shandong BSF Center: Large-scale Black Soldier Fly factory. Annual waste processing of 50,000 tons, increased protein yield by 180%, and reduced operating costs by 45% through AI automation.
+        3. Domestic BSF Resource Recovery: Processed food waste, reducing costs by 30% and odors by 80%, with 200% capacity scale-up.
         Answer professionally and concisely in Korean. 
         Context: ${userMsg}`,
         config: {
-          systemInstruction: "엠지오바이오의 전문 상담 AI로서 구체적인 수치와 기술력을 바탕으로 신뢰감 있게 답변하세요.",
+          systemInstruction: "MG Bio Serve Inc.의 전문 상담 AI로서 중국 산둥성 프로젝트를 포함한 구체적인 수치와 기술력을 바탕으로 신뢰감 있게 답변하세요.",
           temperature: 0.7,
         }
       });
@@ -64,7 +65,7 @@ const Assistant: React.FC = () => {
           <div className="p-4 border-b border-neutral-800 flex justify-between items-center bg-black/20">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest">MGO-AI Assistant</span>
+              <span className="text-xs font-bold uppercase tracking-widest">MG-AI Assistant</span>
             </div>
             <button onClick={() => setIsOpen(false)} className="text-neutral-500 hover:text-white">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -97,7 +98,7 @@ const Assistant: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-              placeholder="프로젝트 성과가 궁금하신가요?"
+              placeholder="산둥성 프로젝트에 대해 물어보세요."
               className="flex-1 bg-neutral-800 border-none rounded-xl px-4 py-2 text-sm text-white focus:ring-1 focus:ring-[#fc3b00] transition-all"
             />
             <button 

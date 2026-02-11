@@ -25,10 +25,22 @@ const cases: CaseStudy[] = [
   },
   { 
     id: '02', 
-    title: '음식물 쓰레기 자원화 시스템', 
-    subtitle: '동애등애(BSF) 기반 바이오 전환 및 사료 자원화 시설 구축',
-    category: '순환 경제 솔루션', 
+    title: '중국 산둥성 BSF 자원화 센터', 
+    subtitle: 'AI 자동화 공정 기반 대규모 동애등애 양산 및 유기성 폐기물 자원화 시설',
+    category: '스마트 바이오 팩토리', 
     img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1000&q=80',
+    stats: [
+      { label: '연간 폐기물 처리', value: '50,000t' },
+      { label: '단백질 생산 수율', value: '180%' },
+      { label: '운영 비용 절감', value: '-45%' }
+    ]
+  },
+  { 
+    id: '03', 
+    title: '음식물 쓰레기 자원화 시스템', 
+    subtitle: '동애등애(BSF) 기반 바이오 전환 및 사료 자원화 국내 표준 모델 구축',
+    category: '순환 경제 솔루션', 
+    img: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1000&q=80',
     stats: [
       { label: '처리 비용 절감', value: '-30%' },
       { label: '악취 민원 감소', value: '-80%' },
@@ -36,7 +48,7 @@ const cases: CaseStudy[] = [
     ]
   },
   { 
-    id: '03', 
+    id: '04', 
     title: '글로벌 ESG 데이터 플랫폼', 
     subtitle: '바이오 성과 지표의 실시간 모니터링 및 인증 관리 시스템',
     category: '데이터 인텔리전스', 
@@ -77,14 +89,13 @@ const WorkSection: React.FC = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
-      // 커스텀 이벤트를 통해 폼에 프로젝트명 전달
       const event = new CustomEvent('setProjectInquiry', { detail: projectTitle });
       window.dispatchEvent(event);
     }
   };
 
   return (
-    <section id="work" ref={containerRef} className="relative h-[300vh] bg-[#050505]">
+    <section id="work" ref={containerRef} className="relative h-[400vh] bg-[#050505]">
       <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
         
         {/* Header Indicators */}
@@ -93,7 +104,7 @@ const WorkSection: React.FC = () => {
             <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#fc3b00]">Success Stories</span>
             <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tighter">혁신이 만들어낸 실제의 변화</h2>
           </div>
-          <span className="text-[10px] font-bold tracking-widest uppercase text-neutral-600">Case Studies / 01-03</span>
+          <span className="text-[10px] font-bold tracking-widest uppercase text-neutral-600">Case Studies / 01-04</span>
         </div>
 
         {/* Horizontal Track */}

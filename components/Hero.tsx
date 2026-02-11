@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <header className="relative w-full h-screen flex flex-col justify-end px-6 md:px-12 pb-12 overflow-hidden bg-[#050505]" id="hero">
+    <header className="relative w-full h-screen flex flex-col justify-end px-6 md:px-12 pb-12 overflow-hidden bg-[#050505] pt-32" id="hero">
       <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-60" />
       
       {/* Decorative Blur */}

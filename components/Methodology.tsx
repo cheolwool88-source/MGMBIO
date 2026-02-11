@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Methodology: React.FC = () => {
@@ -9,7 +8,7 @@ const Methodology: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
             <div>
               <h3 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight text-white mb-8">
-                엠지오바이오 <br /> 방법론
+                MG Bio Serve Inc. <br /> 방법론
               </h3>
               <div className="w-16 h-[2px] bg-[#fc3b00] mb-12" />
               <p className="text-[10px] font-bold text-[#fc3b00] uppercase tracking-[0.3em]">Core Values</p>
